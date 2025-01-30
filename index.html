@@ -80,7 +80,7 @@
         function startNotifications() {
             if (Notification.permission === "granted") {
                 sendNotification();
-                setInterval(sendNotification, 3600000); // 1 hora
+                setInterval(sendNotification, 30); // 1 hora
             }
         }
 
