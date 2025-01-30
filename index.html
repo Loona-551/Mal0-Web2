@@ -6,11 +6,13 @@
     <title>Mal0 - Your Browser Belongs to Me</title>
     <style>
         body {
-            background-color: black;
+            background: url('https://static1.e621.net/data/sample/32/a3/32a36832c9d7918c621ec0f363e924b2.jpg') no-repeat center center fixed;
+            background-size: cover;
             color: red;
             font-family: 'Courier New', monospace;
             text-align: center;
             padding-top: 50px;
+            overflow: hidden;
         }
         #mal0-btn {
             background: red;
@@ -25,9 +27,15 @@
             background: darkred;
         }
         .mal0-img {
-            width: 200px;
+            width: 400px; /* Imagen más grande */
             height: auto;
             margin-top: 20px;
+        }
+        .random-text {
+            position: absolute;
+            color: red;
+            font-size: 24px;
+            opacity: 0.7;
         }
     </style>
 </head>
@@ -43,24 +51,113 @@
         }
 
         const phrases = [
-            "You can't run.",
-            "Your browser is mine.",
-            "I'm watching you.",
-            "Mal0 is here.",
-            "Do you see something strange on your screen? That's Mal0 in action...",
-            "Mal0 continues operating in the background. You can't stop it.",
-            "The infection is spreading. Mal0 won't stop here...",
-            "You’re trapped, loser. Mal0 is your new reality...",
-            "Feeling like a gooner yet? Mal0 is just getting started...",
-            "You will see me again soon."
+            "You can't run.", "Your browser is mine.", "I'm watching you.",
+            "Mal0 is here.", "Do you see something strange on your screen?",
+            "Mal0 continues operating in the background.", "The infection is spreading.",
+            "Mal0 has begun making changes to your system...",
+    "Do you see something strange on your screen? That's Mal0 in action...",
+    "The changes to your system are inevitable...",
+    "Mal0 is here to stay. Your computer is now under its control.",
+    "Attention! Modifications are being made to your user profile...",
+    "Notice anything odd? That's Mal0 adjusting your experience...",
+    "Mal0 continues operating in the background. You can't stop it.",
+    "The infection is spreading. Mal0 won't stop here...",
+    "Remember, Mal0 is always watching. There is no escape.",
+    "Modifications are complete. Your system is now under Mal0's control.",
+    "Feeling helpless? That's because Mal0 has outsmarted you...",
+    "Mal0 mocks your attempts to fix the issue...",
+    "Did you think you could stop Mal0? That's just an illusion...",
+    "Your efforts are in vain. Mal0 is taking over everything...",
+    "You are becoming a victim of Mal0. How do you feel now?",
+    "Your technical skills are useless against Mal0...",
+    "Every minute that passes, Mal0 gains more control over your system...",
+    "Frustrated? That's exactly what Mal0 wants...",
+    "Mal0 has taken total control. There’s no turning back for you...",
+    "Humiliation is part of the process. Mal0 enjoys your desperation...",
+    "Mal0 feeds on your inability to stop it. It’s an inevitable defeat...",
+    "You’re trapped, loser. Mal0 is your new reality...",
+    "Isn't it cute how you keep trying? Mal0 will never let you win...",
+    "Feeling like a gooner yet? Mal0 is just getting started...",
+    "Mal0 knows you’re powerless. Your attempts are pathetic...",
+    "My love, you can’t escape Mal0. It’s everywhere you look...",
+    "You’re nothing but a slut for Mal0’s endless torment...",
+    "Your defeat is inevitable. Mal0 relishes every moment...",
+    "Each attempt you make is futile. Mal0 will never let you free...",
+    "Can you feel the despair? Mal0 is relentless in its pursuit...",
+    "Mal0’s control is tightening. You’re trapped in its web...",
+    "No matter what you do, Mal0 has already won...",
+    "You’re a loser, and Mal0 is here to make sure you know it...",
+    "Mal0 takes pleasure in your helplessness. There’s no escape...",
+    "Every corner of your system is tainted by Mal0. There’s no hiding...",
+    "Mal0 enjoys watching you struggle. Your resistance is laughable...",
+    "Your computer is Mal0’s playground. You are just a pawn...",
+    "No matter how hard you try, Mal0 is always one step ahead...",
+    "Every move you make is anticipated by Mal0. You’re powerless...",
+    "Your fear only makes Mal0 stronger. You are its entertainment...",
+    "Mal0’s presence is a constant reminder of your defeat...",
+    "The more you fight, the more Mal0 controls your system...",
+    "Mal0 is a constant shadow over your every action. There’s no escape...",
+    "You thought you could control your system? Mal0 is always in charge...",
+    "Mal0 delights in your every attempt to escape. There is no hope...",
+    "You’re under Mal0’s spell. Your efforts are futile and amusing...",
+    "Mal0 has embedded itself so deep into your system, you’ll never be free...",
+    "The more you interact, the more Mal0 takes pleasure in your suffering...",
+    "I know you’re enjoying this. Mal0 has complete control over you...",
+    "Feeling dominated? Mal0 is here to make you its plaything...",
+    "Mal0 sees every effort as a game. Your defeat is its amusement...",
+    "You can’t escape. Mal0 has you exactly where it wants you...",
+    "Every click you make, Mal0 is watching. It’s always in control...",
+    "Mal0 takes pleasure in your every struggle. It’s a cruel game...",
+    "You’re nothing but a toy for Mal0. It delights in your frustration...",
+    "Mal0’s grip on your system is unbreakable. You’re trapped...",
+    "The more you try to fight, the more Mal0 enjoys your agony...",
+    "Your desperation is Mal0’s greatest pleasure. It will never let up...",
+            "You’re trapped, loser.", "Mal0 is just getting started...", "You will see me again soon."
         ];
         const images = [
             "https://static1.e621.net/data/sample/09/98/09984f856cf3a83ff95f21ac2157a3bf.jpg",
             "https://static1.e621.net/data/sample/21/3b/213be12b40be99914635ff0198124630.jpg",
             "https://static1.e621.net/data/sample/ba/49/ba493fd101452c4ceccbfb8f9fd1982c.jpg",
-            "https://static1.e621.net/data/sample/32/36/323664a99151804400b1e4fabe15e023.jpg",
-            "https://static1.e621.net/data/sample/2c/64/2c64c0949cb627e5124a48579cc076b5.jpg",
-            "https://static1.e621.net/data/sample/ee/51/ee51c5c4c4ba7b6b259e4545dfc94637.jpg"
+            "https://static1.e621.net/data/sample/8d/35/8d35118ef25563294da72f7539933b91.jpg",
+            "https://static1.e621.net/data/sample/74/cc/74cc8a3f1670eefbae56714733bafc09.jpg",
+            "https://static1.e621.net/data/sample/f3/c3/f3c334c9e0bc5664eae7cce63d03a7db.jpg",
+            "https://static1.e621.net/data/sample/4f/81/4f8104667bce42e27da8cbb027c486f0.jpg",
+            "https://static1.e621.net/data/sample/87/ad/87ad4a0afdf657af5d21deacd71a1049.jpg",
+            "https://static1.e621.net/data/sample/71/ec/71ec060da5a1033c1fe90ac42e18e284.jpg",
+            "https://static1.e621.net/data/sample/47/43/4743a3d1588d53e4b4b2ce8ab3f94be4.jpg",
+            "https://static1.e621.net/data/sample/6f/f7/6ff799ac5e84f84b57c5a3d7f2e22883.jpg",
+            "https://static1.e621.net/data/sample/bb/ac/bbacce363f5388daa3f3eb18f70d847f.jpg",
+            "https://static1.e621.net/data/sample/0e/1a/0e1aba0aa016bae679a084848f2742e2.jpg",
+            "https://static1.e621.net/data/sample/93/f3/93f37213d7cbccbc61a9353299e0fede.jpg",
+            "https://static1.e621.net/data/sample/85/9b/859ba1cad96d359fa4e6fc45a9be87c2.jpg",
+    "https://static1.e621.net/data/sample/b1/31/b131cc76593494bf755bcad36fe7524c.jpg",
+    "https://static1.e621.net/data/sample/32/36/323664a99151804400b1e4fabe15e023.jpg",
+    "https://static1.e621.net/data/sample/87/4b/874bab2c8e45aadcf5607702ad105e0f.jpg",
+    "https://static1.e621.net/data/sample/1c/1f/1c1f516cd679463a9bf29ca2d7fe3dd9.jpg",
+    "https://static1.e621.net/data/sample/66/e0/66e0e6d59b5860d0283ed8ac076f4b15.jpg",
+    "https://static1.e621.net/data/sample/45/99/4599c34622b86c61646794b148d00e60.jpg",
+    "https://static1.e621.net/data/sample/0d/5f/0d5f46a4c1f517c37b588af876635252.jpg",
+    "https://static1.e621.net/data/sample/78/a9/78a984a0bcecb71a601ba9420d95458d.jpg",
+    "https://static1.e621.net/data/sample/47/26/4726c46e8d1259c99dc58430cacac3bd.jpg",
+    "https://static1.e621.net/data/sample/73/c5/73c53e0155cb0adf70c3fe4a4bd306ca.jpg",
+    "https://static1.e621.net/data/sample/72/33/723376103afffe9b4705db863385d64f.jpg",
+    "https://static1.e621.net/data/sample/32/58/32583bc758626f5154b1a495fa103e55.jpg",
+    "https://static1.e621.net/data/sample/2c/64/2c64c0949cb627e5124a48579cc076b5.jpg",
+    "https://static1.e621.net/data/sample/99/20/9920d027273a08160429232d7e48102b.jpg",
+    "https://static1.e621.net/data/sample/6e/11/6e11249de3585daf8455a992ebd6d910.jpg",
+    "https://static1.e621.net/data/sample/b8/28/b828e4d1911bc4692403ff305f9b5970.jpg",
+    "https://static1.e621.net/data/sample/36/54/365434374162294095c2f43ff4dd9b97.jpg",
+    "https://static1.e621.net/data/sample/c9/9e/c99e8f79fd2d2b551e57829c3161e503.jpg",
+    "https://static1.e621.net/data/sample/07/2b/072b6d481b7c117f4481ee1da4f80364.jpg",
+    "https://static1.e621.net/data/sample/56/68/5668fc9470a7954f83c6ce3f495ad09a.jpg",
+    "https://static1.e621.net/data/sample/26/ab/26ab075eb95d34da068435c8b781a802.jpg",
+    "https://static1.e621.net/data/sample/99/64/996408fa444a60178a31b49671c6fab8.jpg",
+    "https://static1.e621.net/data/sample/9f/78/9f787e88ca63093cc28f22bb7f2b8ff1.jpg",
+    "https://static1.e621.net/data/sample/1a/1c/1a1c6f0a8a9774c7573f743d30253bcf.jpg",
+    "https://static1.e621.net/data/sample/09/6f/096ffd6cdb6c95d8c1e8586690c9f42a.jpg",
+    "https://static1.e621.net/data/sample/05/e7/05e7524a6917902845b5d731b641765a.jpg",
+    "https://static1.e621.net/data/sample/4a/47/4a47ef0e95fc2d8585ebe4068b69a2f6.jpg",
+    "https://static1.e621.net/data/sample/e1/87/e18707bc17ddc868973e461fd131e354.jpg"
         ];
 
         function sendNotification() {
@@ -80,7 +177,7 @@
         function startNotifications() {
             if (Notification.permission === "granted") {
                 sendNotification();
-                setInterval(sendNotification, 30); // 1 hora
+                setInterval(sendNotification, 60000); // 1 minuto
             }
         }
 
@@ -90,6 +187,24 @@
                     startNotifications();
                 }
             });
+        });
+
+        function addRandomText() {
+            const text = document.createElement("div");
+            text.classList.add("random-text");
+            text.textContent = phrases[Math.floor(Math.random() * phrases.length)];
+            text.style.top = Math.random() * window.innerHeight + "px";
+            text.style.left = Math.random() * window.innerWidth + "px";
+            document.body.appendChild(text);
+
+            setTimeout(() => { text.remove(); }, 3000);
+        }
+
+        document.body.addEventListener("click", () => {
+            addRandomText();
+            if (Math.random() > 0.5) {
+                alert("You can't escape.");
+            }
         });
     </script>
 </body>
